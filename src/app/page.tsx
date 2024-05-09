@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import Demo from "./heatmap";
 
 export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      Commit Tracker
+      <h1> Daily Commit </h1>
+      <Demo />
     </main>
   );
 }
