@@ -1,7 +1,6 @@
-"use client";
 
-import Link from "next/link";
-import Demo from "./heatmap";
+import Demo from "src/app/heatmap";
+
 
 export default function HomePage() {
   return (
