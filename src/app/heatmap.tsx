@@ -15,6 +15,14 @@ const Demo = () => {
       <HeatMap
         width={600}
         startDate={start}
+        // panelColors={{
+        //     0: '#000000',
+        //     2: '#e4b293',
+        //     4: '#d48462',
+        //     10: '#c2533a',
+        //     20: '#ad001d',
+        //     30: '#000',
+        //   }}
         rectRender={(props, data) => {
           if (selected !== '') {
             props.opacity = data.date === selected ? 1 : 0.45

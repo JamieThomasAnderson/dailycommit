@@ -13,6 +13,16 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
+const Nav = () => {
+  return (
+    <nav className="flex items-center justify-between w-full p-4 border-b text-xl font-semibold">
+      <div>DailyCommit</div>
+
+      <div>Sign In</div>
+    </nav>
+  )
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -20,7 +30,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>{children}</body>
+      <body className={`font-sans ${inter.variable}`}>
+        <Nav />
+        {children}
+        </body>
     </html>
   );
 }
