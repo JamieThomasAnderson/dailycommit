@@ -1,4 +1,4 @@
-import Demo from "src/app/heatmap";
+import Demo from "~/app/_components/heatmap";
 import { db } from "~/server/db";
 
 export const dynamic = "force-dynamic";
