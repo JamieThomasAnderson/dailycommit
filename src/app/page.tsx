@@ -1,6 +1,7 @@
-
 import Demo from "src/app/heatmap";
 import { db } from "~/server/db";
+
+export const dynamic = "force-dynamic";
 
 const mockProjectNames = [
   "Journal",
