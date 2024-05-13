@@ -3,23 +3,11 @@ import { db } from "~/server/db";
 
 export const dynamic = "force-dynamic";
 
-const mockProjectNames = [
-  "Journal",
-  "Run",
-  "Side Hustle"
-];
-
-const mockProjects = mockProjectNames.map((name, index) => ({
-  id: index + 1,
-  name,
-}));
-
-
 export default async function HomePage() {
 
-  const posts = await db.query.posts.findMany();
-
-  console.log(posts);
+  const projects = await db.query.projects.findMany({
+    orderBy:(model, { desc }) => desc(model.id),
+  });
 
   return (
     <main className="flex min-h-screen flex-col justify-center items-center">
@@ -29,10 +17,9 @@ export default async function HomePage() {
         <div className="w-64 bg-black text-white p-2 rounded hover:bg-neutral-700">Project</div>
       </div>
 
-      {posts.map((post) => (<div key={post.id}>{post.name}</div>))}
 
       <div>{
-        mockProjects.map((project) => (
+        projects.map((project) => (
           <div key={project.id}>
             <h1>{project.name}</h1>
             <Demo />
