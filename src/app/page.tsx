@@ -30,10 +30,10 @@ export default async function HomePage() {
   return (
     <main className="flex min-h-screen flex-col justify-center items-center">
 
-      {/* <div className="flex flex-col space-y-1">
+      <div className="flex flex-col space-y-1">
         <div className="w-64 bg-black text-white p-2 rounded hover:bg-neutral-700">Date</div>
         <div className="w-64 bg-black text-white p-2 rounded hover:bg-neutral-700">Project</div>
-      </div> */}
+      </div>
 
       <SignedOut>
         <div className="flex w-full h-full justify-center items-center text-2xl font-semibold"> Please sign in above</div>
