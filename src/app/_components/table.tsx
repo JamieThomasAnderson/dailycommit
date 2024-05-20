@@ -9,46 +9,45 @@ import {
 } from "~/components/ui/table";
 
 import { GitMerge, Trash2 } from 'lucide-react';
+const commits = [
+  {
+      Project: "Running",
+      Date: "12/12/2024",
+      Time: "1:26:42",
+  },
+  {
+      Project: "Running",
+      Date: "12/12/2024",
+      Time: "1:26:42",
+  },
+  {
+      Project: "Running",
+      Date: "12/12/2024",
+      Time: "1:26:42",
+  },
+  {
+      Project: "Running",
+      Date: "12/12/2024",
+      Time: "1:26:42",
+  },
+  {
+      Project: "Running",
+      Date: "12/12/2024",
+      Time: "1:26:42",
+  },
+  {
+      Project: "Running",
+      Date: "12/12/2024",
+      Time: "1:26:42",
+  },
+  {
+      Project: "Running",
+      Date: "12/12/2024",
+      Time: "1:26:42",
+  },
+]
 
 const CommitTable = () => {
-    const commits = [
-        {
-            Project: "Running",
-            Date: "12/12/2024",
-            Time: "1:26:42",
-        },
-        {
-            Project: "Running",
-            Date: "12/12/2024",
-            Time: "1:26:42",
-        },
-        {
-            Project: "Running",
-            Date: "12/12/2024",
-            Time: "1:26:42",
-        },
-        {
-            Project: "Running",
-            Date: "12/12/2024",
-            Time: "1:26:42",
-        },
-        {
-            Project: "Running",
-            Date: "12/12/2024",
-            Time: "1:26:42",
-        },
-        {
-            Project: "Running",
-            Date: "12/12/2024",
-            Time: "1:26:42",
-        },
-        {
-            Project: "Running",
-            Date: "12/12/2024",
-            Time: "1:26:42",
-        },
-
-    ]
     return (
         <Table>
             <TableHeader>
