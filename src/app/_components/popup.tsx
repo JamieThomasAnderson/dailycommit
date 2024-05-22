@@ -22,12 +22,13 @@ interface PopupProps {
   logo: React.ReactNode;
   submitText: string;
   onSubmit: (event: React.MouseEvent<HTMLButtonElement>) => void,
+  isOpen: boolean
 }
 
-const Popup: React.FC<PopupProps> = ({ trigger, title, description, content, logo, submitText, onSubmit }) => {
+const Popup: React.FC<PopupProps> = ({ trigger, title, description, content, logo, submitText, onSubmit, isOpen }) => {
 
   return (
-    <Drawer open>
+    <Drawer open={isOpen}>
       <DrawerTrigger>{trigger}</DrawerTrigger>
       <DrawerContent className="h-3/5">
         <div className="mx-auto w-full max-w-sm h-full">

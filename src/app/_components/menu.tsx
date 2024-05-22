@@ -36,9 +36,10 @@ const Menu: React.FC<{userId: string | undefined}> = ({ userId }) => {
   const [project, setProject] = React.useState<string>("Select a Project");
   const [commitMsg, setCommitMsg] = React.useState<string>("");
   const [projectName, setProjectName] = React.useState<string>("");
+  const [open, setOpen] = React.useState<boolean>(false);
 
   const handleCreateProject = async () => {
-    // await createProject(projectName, userId).then(() => console.log("complete!"))
+    await createProject(projectName, userId).then(() => setOpen(false))
   }
 
   const addCommit = () => {
@@ -60,6 +61,7 @@ const Menu: React.FC<{userId: string | undefined}> = ({ userId }) => {
             <CommitPopupContent project={project} setProject={setProject} />
           }
           submitText={'Track'}
+          isOpen={false}
         />
 
         <Popup
@@ -74,6 +76,7 @@ const Menu: React.FC<{userId: string | undefined}> = ({ userId }) => {
             <Input onChange={(e) => setProjectName(e.target.value)} placeholder='New project' maxLength={48} />
           }
           submitText={'Create'}
+          isOpen={open}
         />
       </div>
 
