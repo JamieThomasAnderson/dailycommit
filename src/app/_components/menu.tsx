@@ -38,6 +38,8 @@ const Menu: React.FC<{userId: string | undefined}> = ({ userId }) => {
   const [projectName, setProjectName] = React.useState<string>("");
   const [open, setOpen] = React.useState<boolean>(false);
 
+  // honestly I just don't want to miss a commit day.
+
   const handleCreateProject = async () => {
     await createProject(projectName, userId).then(() => setOpen(false))
   }
