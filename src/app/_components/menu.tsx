@@ -20,7 +20,9 @@ interface MenuButtonProps {
 
 const MenuButton: React.FC<MenuButtonProps> = ({ logo, name }) => {
   return (
-    <div className="w-36 h-36 bg-neutral-900 text-white p-2 rounded hover:bg-stone-700" role="button">
+    <div className="w-36 h-36 bg-neutral-900 text-white p-2 rounded hover:bg-stone-700"
+      role="button"
+    >
       {logo}
       <div className="font-semibold text-xl pt-8 pr-14">
         {name}
@@ -31,14 +33,13 @@ const MenuButton: React.FC<MenuButtonProps> = ({ logo, name }) => {
 
 
 
-const Menu: React.FC<{userId: string | undefined}> = ({ userId }) => {
+const Menu: React.FC<{ userId: string | undefined }> = ({ userId }) => {
 
   const [project, setProject] = React.useState<string>("Select a Project");
   const [commitMsg, setCommitMsg] = React.useState<string>("");
   const [projectName, setProjectName] = React.useState<string>("");
   const [open, setOpen] = React.useState<boolean>(false);
 
-  // honestly I just don't want to miss a commit day.
 
   const handleCreateProject = async () => {
     await createProject(projectName, userId).then(() => setOpen(false))
@@ -57,13 +58,17 @@ const Menu: React.FC<{userId: string | undefined}> = ({ userId }) => {
           logo={<GitBranch size={20} />}
           onSubmit={addCommit}
           trigger={
-            <MenuButton logo={<GitBranch size={32} strokeWidth={3} />} name={"commit"} />
+            <MenuButton
+              logo={<GitBranch
+                size={32}
+                strokeWidth={3} />}
+              name={"commit"}
+            />
           }
           content={
             <CommitPopupContent project={project} setProject={setProject} />
           }
           submitText={'Track'}
-          isOpen={false}
         />
 
         <Popup
@@ -78,12 +83,11 @@ const Menu: React.FC<{userId: string | undefined}> = ({ userId }) => {
             <Input onChange={(e) => setProjectName(e.target.value)} placeholder='New project' maxLength={48} />
           }
           submitText={'Create'}
-          isOpen={open}
         />
       </div>
 
 
-        {/* <div className="w-36 h-36 bg-neutral-900 text-white p-2 rounded hover:bg-stone-700">
+      {/* <div className="w-36 h-36 bg-neutral-900 text-white p-2 rounded hover:bg-stone-700">
           <Plus size={32} strokeWidth={3} />
           <div className="font-semibold text-xl pt-8">
             project
