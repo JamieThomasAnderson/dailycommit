@@ -14,40 +14,49 @@ import { Button } from "~/components/ui/button";
 
 import React from 'react';
 
+{/* <div>
+{title}
+</div>
+<div className="pl-2">
+{logo}
+</div> */}
+
+{/* <div className="p-4">
+{content}
+</div> */}
+
+            // {/* just pass down the content?? */}
+            // <Button onClick={onSubmit}>{submitText}</Button>
+
 interface PopupProps {
-  trigger: React.ReactNode;
-  title: string;
-  description: string;
-  content: React.ReactNode;
-  logo: React.ReactNode;
-  submitText: string;
-  onSubmit: (event: React.MouseEvent<HTMLButtonElement>) => void,
+  triggerContent: React.ReactNode;
+  headerContent: React.ReactNode;
+  descriptionContent: React.ReactNode;
+  mainContent: React.ReactNode;
+  submitContent: React.ReactNode;
 }
 
-const Popup: React.FC<PopupProps> = ({ trigger, title, description, content, logo, submitText, onSubmit }) => {
+const Popup: React.FC<PopupProps> = 
+  ({ triggerContent, headerContent, descriptionContent, mainContent, submitContent }) => {
 
   return (
     <Drawer>
-      <DrawerTrigger>{trigger}</DrawerTrigger>
+      <DrawerTrigger>
+        {triggerContent}
+      </DrawerTrigger>
       <DrawerContent className="h-3/5">
         <div className="mx-auto w-full max-w-sm h-full">
           <DrawerHeader>
-            <DrawerTitle className="flex items-stretch">
-              <div>
-                {title}
-              </div>
-              <div className="pl-2">
-                {logo}
-              </div>
+            <DrawerTitle>
+              {headerContent}
             </DrawerTitle>
-            <DrawerDescription>{description}</DrawerDescription>
+            <DrawerDescription>
+              {descriptionContent}
+            </DrawerDescription>
           </DrawerHeader>
-          <div className="p-4">
-            {content}
-          </div>
+            {mainContent}
           <DrawerFooter>
-            {/* just pass down the content?? */}
-            <Button onClick={onSubmit}>{submitText}</Button>
+            {submitContent}
             <DrawerClose>
               <Button variant="outline" className="w-1/4 h-10">Cancel</Button>
             </DrawerClose>

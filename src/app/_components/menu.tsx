@@ -8,9 +8,7 @@ import CommitPopupContent from "~/app/_components/commit";
 
 import React, { ChangeEvent } from 'react';
 import { createProject, Project } from "~/actions/db";
-import { create } from 'domain';
-
-
+import { Button } from '~/components/ui/button';
 
 
 interface MenuButtonProps {
@@ -53,11 +51,7 @@ const Menu: React.FC<{ userId: string | undefined }> = ({ userId }) => {
     <div className='flex items-stretch space-x-2'>
       <div className="flex flex-col space-y-1 pt-2">
         <Popup
-          title={"Create a new commit"}
-          description={"Track daily progress with a meaningful message"}
-          logo={<GitBranch size={20} />}
-          onSubmit={addCommit}
-          trigger={
+          triggerContent = {
             <MenuButton
               logo={<GitBranch
                 size={32}
@@ -65,13 +59,30 @@ const Menu: React.FC<{ userId: string | undefined }> = ({ userId }) => {
               name={"commit"}
             />
           }
-          content={
+          headerContent = {
+            <div className="flex items-stretch">
+              <div>
+                Create a new commit
+              </div>
+              <div className="pl-2">
+                <GitBranch size={20} />
+              </div>
+            </div>
+          }
+          mainContent = {
             <CommitPopupContent project={project} setProject={setProject} />
           }
-          submitText={'Track'}
+          descriptionContent= {
+            <p>
+              Add a commit message to track your progress
+            </p>
+          }
+          submitContent = {
+            <Button onClick={() => console.log("test")}>Commit</Button>
+          }
         />
 
-        <Popup
+        {/* <Popup
           title={"Create a new project"}
           description={"Looking to start something new?"}
           logo={<Plus size={20} />}
@@ -83,7 +94,7 @@ const Menu: React.FC<{ userId: string | undefined }> = ({ userId }) => {
             <Input onChange={(e) => setProjectName(e.target.value)} placeholder='New project' maxLength={48} />
           }
           submitText={'Create'}
-        />
+        /> */}
       </div>
 
 
