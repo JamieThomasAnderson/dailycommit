@@ -3,18 +3,29 @@
 import React, { useState } from 'react';
 import HeatMap from '@uiw/react-heat-map';
 
-const start = new Date();
-start.setFullYear(start.getFullYear() - 1);
+const end = new Date();
+const start = new Date;
+start.setMonth(start.getMonth() - 11);
 
+const heatmapData = [
+  // This is an example data format. You need to replace it with your actual data.
+  { date: '2023-05-01', count: 1 },
+  { date: '2023-05-02', count: 2 },
+  // Add more data points as needed
+];
 
-
-const Demo = () => {
+const ProjectHeatmap = () => {
   const [selected, setSelected] = useState('')
+
+  console.log(selected);
+
   return (
     <div>
       <HeatMap
-        width={600}
+        value={heatmapData}
+        width={800}
         startDate={start}
+        endDate={end}
         // panelColors={{
         //     0: '#000000',
         //     2: '#e4b293',
@@ -37,4 +48,4 @@ const Demo = () => {
     </div>
   )
 };
-export default Demo
+export default ProjectHeatmap;
