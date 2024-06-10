@@ -10,31 +10,62 @@ import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 
-
+const ProjectPin = () => {
+  return (
+    <div className="border-2 w-96">
+      <h1>Polytree</h1>
+      <p>Research & Notetaking Tool</p>
+    </div>
+  )
+}
 
 export default async function HomePage() {
   const user = await currentUser();
 
   return (
-    <main className="grid grid-cols-10 gap-4">
-      <div className="col-start-5 col-span-4">
+    <main className="grid grid-cols-12 gap-4 relative">
+      <div className="col-start-5 col-span-6 absolute top-0">
       <SignedOut>
         <div className="flex w-full h-full justify-center items-center text-2xl font-semibold">
           Please sign in above
         </div>
       </SignedOut>
       
-      test</div>
+      <div className="pl-4 pt-12">
+        <p className="text-md font-thin">Pinned</p>
+        <div className="grid grid-cols-2 gap-x-12 gap-y-6">
+          <ProjectPin />
+          <ProjectPin />
+          <ProjectPin />
+          <ProjectPin />
+          <ProjectPin />
+          <ProjectPin />
+          <ProjectPin />
+          <ProjectPin />
+        </div>
+      </div>
+      
+      </div>
 
-      <div className="col-start-3 col-span-2">
+      <div className="col-start-3 col-span-2 p-6 mt-6">
         <Image 
-          src={user?.imageUrl}
+          src={user?.imageUrl ?? ''}
           width={600}
           height={600}
-          alt={user?.fullName}
+          alt={user?.fullName ?? ''}
           className="rounded-full"
         />
       
+      <h1 className="text-xl font-semibold pr-4 pt-4">
+        {user?.fullName}
+      </h1>
+      <h1 className="text-xl pb-4">
+        {user?.username}
+      </h1>
+
+      <p className="text-sm">
+        Bachelor of Information Technology (Computer Science) Student at the Queensland University of Technology (QUT) 
+      </p>
       
       </div>
     </main>
