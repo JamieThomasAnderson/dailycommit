@@ -2,6 +2,7 @@ import { SignedIn } from "@clerk/nextjs";
 import { SignedOut } from "@clerk/nextjs";
 import { currentUser } from '@clerk/nextjs/server';
 
+import { Album } from 'lucide-react';
 
 import CommitTable from "~/app/_components/table";
 import CommitCalendar from "~/app/_components/calendar";
@@ -14,11 +15,21 @@ export const dynamic = "force-dynamic";
 
 const ProjectPin = () => {
   return (
-    <div className="border border-neutral-700 rounded h-24 w-96">
-      <div className="p-2">
-        <p className="text-sm">Polytree</p>
-        <p className="text-slate-400">Research & Notetaking Tool</p>
+    <div className="border border-neutral-700 rounded h-20 w-full">
+      <div className="flex items-stretch space-x-1.5  ">
+        <Album className="w-7 h-7 text-neutral-400 pl-2 pt-3" />
+        <a href="#" className="flex items-center text-sm text-blue-500 font-semibold hover:underline pt-2.5">
+          Running
+        </a>
+        <div className="pt-2 ">
+          <span className="inline-flex items-center px-1 rounded-full text-[11px] font-medium border border-neutral-600 text-neutral-400">
+            Public
+          </span>
+        </div>
       </div>
+      <div>
+      </div>
+      <p className="text-slate-400 pl-2 text-xs pt-2">Goal: Run 5KM Every Day</p>
     </div>
   )
 }
@@ -26,74 +37,53 @@ const ProjectPin = () => {
 export default async function HomePage() {
   const user = await currentUser();
 
+
+
   return (
-    <main className="grid grid-cols-12 gap-4 relative">
-      <div className="col-start-5 col-span-6 absolute top-0">
-      <SignedOut>
-        <div className="flex w-full h-full justify-center items-center text-2xl font-semibold">
-          Please sign in above
+    <main className="flex justify-center min-h-screen mt-6 ml-4 mr-4">
+      <div className="w-full max-w-screen-xl p-4 shadow-md flex">
+        <div className="w-1/4 min-w-[270px] p-6">
+
+
+          <div className="">
+            <Image
+              src={user?.imageUrl ?? ''}
+              width={600}
+              height={600}
+              alt={user?.fullName ?? ''}
+              className="rounded-full"
+            />
+
+            <h1 className="text-xl font-semibold pr-4 pt-4">
+              {user?.fullName}
+            </h1>
+            <h1 className="text-lg font-thin pb-4 text-slate-400 text-wrap">
+
+              {user?.username}
+            </h1>
+
+            <p className="text-sm">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+            </p>
+          </div>
+
+
         </div>
-      </SignedOut>
-      
-      <div className="pl-4 pt-12">
-        <p className="text-md font-thin pb-2">Pinned</p>
-        <div className="flex items-stretch space-x-2">
-          <ProjectPin />
-          <ProjectPin />
-        </div>
-        <div className="flex items-stretch space-x-2 pt-2">
-          <ProjectPin />
+
+        <div className="w-3/4">
+          <div className="">
+            <p className="text-sm pb-2 ">Pinned</p>
+            <div className="flex items-stretch space-x-2 pb-2">
+              <ProjectPin />
+              <ProjectPin />
+            </div>
+            <div className="flex items-stretch space-x-2 pb-2">
+              <ProjectPin />
+              <ProjectPin />
+            </div>
+          </div>
         </div>
       </div>
-      <ProjectHeatmap />
-      </div>
-
-      <div className="col-start-3 col-span-2 p-6 mt-6 lg:w-64">
-        <Image 
-          src={user?.imageUrl ?? ''}
-          width={600}
-          height={600}
-          alt={user?.fullName ?? ''}
-          className="rounded-full"
-        />
-      
-      <h1 className="text-xl font-semibold pr-4 pt-4">
-        {user?.fullName}
-      </h1>
-      <h1 className="text-xl pb-4 text-slate-400 text-wrap">
-        {user?.username}
-      </h1>
-
-      <p className="text-sm">
-        Bachelor of Information Technology (Computer Science) Student at the Queensland University of Technology (QUT) 
-      </p>
-      </div>
-    </main>
-
-    // <main className="flex flex-col">
-    // <SignedIn>
-    //     <div className="flex flex-col justify-center items-center">
-    //       <div className="relative h-42 w-[580px] text-[48px] font-semibold pt-16">
-    //         Hi, {user?.firstName}
-    //       </div>
-
-    //       <div className="flex items-stretch space-x-2">
-    //         <Menu userId={user?.id}/>
-
-    //         <div className="flex h-80 flex-col overflow-y-scroll">
-    //           <CommitCalendar />
-    //         </div>
-
-    //       </div>
-
-    //       <div className="flex h-64 flex-col overflow-y-scroll">
-    //         <CommitTable />
-    //       </div>
-
-    //       <div className="pt-16"></div>
-
-    //     </div>
-    //   </SignedIn>
-    // </main>
+    </main >
   );
 }
