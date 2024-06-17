@@ -9,9 +9,25 @@ import CommitCalendar from "~/app/_components/calendar";
 import Menu from "~/app/_components/menu";
 import Image from "next/image";
 import ProjectHeatmap from "~/app/_components/heatmap";
+import { Button } from "react-day-picker";
 
 export const dynamic = "force-dynamic";
 
+interface CircleProps {
+  color: string;
+  name: string;
+}
+
+const Circle: React.FC<CircleProps> = ({ color, name }) => {
+  return (
+    <div
+      className="flex items-center justify-center w-4 h-4 rounded-full border border-slate-800"
+      style={{ backgroundColor: color }}
+    >
+      <span className="text-xs text-white pl-20">{name}</span>
+    </div>
+  );
+};
 
 const ProjectPin = () => {
   return (
@@ -30,6 +46,8 @@ const ProjectPin = () => {
       <div>
       </div>
       <p className="text-slate-400 pl-2 text-xs pt-2">Goal: Run 5KM Every Day</p>
+
+      <Circle color="#3178C6" name="Typescript" />
     </div>
   )
 }
@@ -40,9 +58,9 @@ export default async function HomePage() {
 
 
   return (
-    <main className="flex justify-center min-h-screen mt-6 ml-4 mr-4">
+    <main className="flex justify-center min-h-screen mt-6">
       <div className="w-full max-w-screen-xl p-4 shadow-md flex">
-        <div className="w-1/4 min-w-[270px] p-6">
+        <div className="w-1/4 min-w-[305px] p-6">
 
 
           <div className="">
@@ -67,17 +85,21 @@ export default async function HomePage() {
             </p>
           </div>
 
+          <div role="button" className="bg-black">
+            Follow
+          </div>
+
 
         </div>
 
         <div className="w-3/4">
           <div className="">
             <p className="text-sm pb-2 ">Pinned</p>
-            <div className="flex items-stretch space-x-2 pb-2">
+            <div className="flex items-stretch space-x-3 pb-3">
               <ProjectPin />
               <ProjectPin />
             </div>
-            <div className="flex items-stretch space-x-2 pb-2">
+            <div className="flex items-stretch space-x-3 pb-3">
               <ProjectPin />
               <ProjectPin />
             </div>
